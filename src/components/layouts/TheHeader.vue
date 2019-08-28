@@ -4,8 +4,16 @@
       <div class="navbar-header">
         <a href="/" class="navbar-brand">
           <span class="title">{{ logo.title }}</span>
-          <img :src="logo.src" :alt="logo.title">
+          <img :src="logo.src" :alt="logo.title" />
         </a>
+      </div>
+
+      <div id="top-navbar-collapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li v-for="(item, index) in navList" :class="{ active: index === activeNavIndex }">
+            <a href="#" @click="changeNavIndex(index)">{{ item }}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -13,21 +21,33 @@
 
 <script>
 export default {
-  name: 'TheHeader',
+  name: "TheHeader",
   data() {
     return {
       logo: {
         src: `${this.uploadsUrl}communities/hIZjRRdF8oVYZy69XJnT.png!/both/44x44`,
-        title: 'VuejsCaff'
-      }
-    }
+        title: "VuejsCaff"
+      },
+      navList: ["社区", "头条", "问答", "教程"],
+      activeNavIndex: 0
+    };
   },
   beforeCreate() {
-    this.uploadsUrl = 'https://cdn.learnku.com//uploads/'
+    this.uploadsUrl = "https://cdn.learnku.com//uploads/";
+  },
+  methods: {
+    changeNavIndex(index) {
+      this.activeNavIndex = index;
+    }
   }
-}
+};
 </script>
 
 <style scoped>
-.title { display: none;}
+.title {
+  display: none;
+}
+.navbar-default .navbar-nav > .active > a {
+  background: rgba(0, 0, 0, .03);
+}
 </style>
