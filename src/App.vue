@@ -1,21 +1,24 @@
 <template>
   <div id="wrap">
-    <TheHeader/> 
-    <TheFooter/> 
+    <TheHeader />
+    <div id="main-container" class="container main-container">
+      <router-view />
+    </div>
+    <TheFooter />
   </div>
 </template>
 
 <script>
-import TheHeader from '@/components/layouts/TheHeader'
-import TheFooter from '@/components/layouts/TheFooter'
+import TheHeader from "@/components/layouts/TheHeader";
+import TheFooter from "@/components/layouts/TheFooter";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     TheHeader,
     TheFooter
   }
-}
+};
 </script>
 
 <style lang="scss">

@@ -8,7 +8,7 @@
           <div class="text-md">
             <a
               v-for="item in contacts"
-              :title="item.title"
+              v-title="item.title"
               :href="item.link"
               :style="contactStyle"
               target="_blank"
@@ -31,7 +31,7 @@
                 <li v-for="item in sponsor.list">
                   <a :href="item.link" target="_blank">
                     <img
-                      :title="item.title"
+                      v-title="item.title"
                       :src="item.logo"
                       :alt="item.title"
                       class="footer-sponsor-link"
@@ -70,8 +70,13 @@
 </template>
 
 <script>
+import title from '@/directives/title'
+
 export default {
   name: "TheFooter",
+  directives: {
+    title
+  },
   data() {
     return {
       description: "VuejsCaff 是一个 Vue.js 的知识社区",
