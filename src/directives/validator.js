@@ -97,20 +97,27 @@ function validate(el, modifiers, bindingValue) {
       const submitBtn = form ? form.querySelector('[type=submit]') : null
   
       if (submitBtn) {
+        // 提交处理器
         const submitHandler = () => {
+          // 验证所有项
           validate(el, modifiers, value)
   
+          // 获取错误信息
           const errors = form.querySelectorAll('.has-error')
   
           if (!errors.length) {
+            // 没有错误信息时，在按钮上添加一个 canSubmit 属性，并指定为 true
             submitBtn.canSubmit = true
           } else {
+            // 有错误信息时，在按钮上添加一个 canSubmit 属性，并指定为 false
             submitBtn.canSubmit = false
           }
         }
   
+        // 在按钮上的添加 click 事件监听
         submitBtn.addEventListener('click', submitHandler, false)
-  
+        
+        // 移除按钮上事件监听和数据绑定的方法
         el.destroySubmitBtn = () => {
           submitBtn.removeEventListener('click', submitHandler, false)
           el.destroySubmitBtn = null
@@ -118,6 +125,7 @@ function validate(el, modifiers, bindingValue) {
       }
     },
     unbind(el) {
+      // 移除事件监听和数据绑定
       el.destroy()
       if (el.destroySubmitBtn) el.destroySubmitBtn()
     }
