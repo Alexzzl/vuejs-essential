@@ -70,10 +70,12 @@
 </template>
 
 <script>
+// 引入 title.js 的默认值
 import title from '@/directives/title'
 
 export default {
   name: "TheFooter",
+  // 添加 directives 选项，并注册 title
   directives: {
     title
   },
@@ -84,12 +86,12 @@ export default {
         {
           icon: "envelope",
           title: "反馈问题",
-          link: "mailto:summer@yousails.com"
+          link: "mailto:805119233@qq.com"
         },
         {
           icon: "weibo",
           title: "站长微博",
-          link: "https://weibo.com/1837553744/profile?topnav=1&wvr=6"
+          link: "https://weibo.com/zhangzhaoli"
         },
         {
           icon: "weixin",
