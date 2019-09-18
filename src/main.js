@@ -6,6 +6,7 @@ import App from './App'
 等价于 import router from './router/index.js'*/
 import router from './router'
 import './directives'
+import './components'
 
 Vue.config.productionTip = false
 
