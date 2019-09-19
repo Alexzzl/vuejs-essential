@@ -119,7 +119,8 @@ export default {
           avatar: `https://api.adorable.io/avatars/200/${this.username}.png`
         };
         // localStorage 的用户信息
-        const localUser = ls.getItem("user");
+        // const localUser = ls.getItem("user");
+        const  localUser = this.$store.state.user// 为 => 从仓库获取用户信息
 
         if (localUser) {
           this.showMsg("有了");
@@ -139,7 +140,8 @@ export default {
     // 登陆
     login(user) {
       // 保存用户信息
-      ls.setItem("user", user);
+      // ls.setItem("user", user);
+      this.$store.dispatch('login', user)// 为 => 分发 login 事件，以保存用户信息和登录
       // alert("注册成功")
       this.showMsg("注册成功", 'success');
     },
