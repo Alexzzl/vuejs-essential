@@ -53,9 +53,11 @@
           <div class="thumbnail" title="点击图片重新获取验证码" @click="getCaptcha">
             <div class="captcha vcenter" v-html="captchaTpl"></div>
           </div>
-          <button type="submit" class="btn btn-lg btn-success btn-block" @click="register">
-            <i class="fa fa-btn fa-sign-in"></i> 注册
-          </button>
+          <span @click="register">
+            <button type="submit" class="btn btn-lg btn-success btn-block">
+              <i class="fa fa-btn fa-sign-in"></i>注册
+            </button>
+          </span>
         </div>
       </div>
     </div>
@@ -106,7 +108,7 @@ export default {
       // 检查验证码是否匹配
       if (this.captcha.toUpperCase() !== this.localCaptcha) {
         // alert("验证码不正确");
-        this.showMsg("验证码不正确")
+        this.showMsg("验证码不正确");
         // 重新获取验证码
         this.getCaptcha();
       } else {
@@ -120,7 +122,7 @@ export default {
         };
         // localStorage 的用户信息
         // const localUser = ls.getItem("user");
-        const  localUser = this.$store.state.user// 为 => 从仓库获取用户信息
+        const localUser = this.$store.state.user; // 为 => 从仓库获取用户信息
 
         if (localUser) {
           this.showMsg("有了");
@@ -141,9 +143,9 @@ export default {
     login(user) {
       // 保存用户信息
       // ls.setItem("user", user);
-      this.$store.dispatch('login', user)// 为 => 分发 login 事件，以保存用户信息和登录
+      this.$store.dispatch("login", user); // 为 => 分发 login 事件，以保存用户信息和登录
       // alert("注册成功")
-      this.showMsg("注册成功", 'success');
+      this.showMsg("注册成功", "success");
     },
     showMsg(msg, type = "warning") {
       this.msg = msg;
